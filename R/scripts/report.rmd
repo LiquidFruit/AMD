@@ -4,7 +4,8 @@ author: "LiquidFruit"
 date: "`r Sys.Date()`"
 output:
   html_document:
-    self_contained: false
+    output_file: "index.html"
+    output_dir: "../../"
 ---
 
 ```{r echo=FALSE, include=FALSE}
