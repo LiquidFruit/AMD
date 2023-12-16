@@ -130,6 +130,38 @@ datatable(mou_datatable_data, selection = 'none', extensions = c('Buttons', 'Sel
 )
 ```
 
+# Lifetime Stats Across All Seasons
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+lifetime_datatable_data = datatable_data %>% group_by(Name, Tag) %>% summarise(Total_Attacks = sum(Attacks), Total_Donations = sum(Donated), Total_Activity_Score = sum(Activity_Score), Total_Received = sum(Received), Total_Dark_Elixir = sum(Dark_Elixir), Total_Clan_Games = sum(Clan_Games), Total_Capital_Gold_Looted = sum(Capital_Gold_Looted), Total_Capital_Gold_Donated = sum(Capital_Gold_Donated))
+
+datatable(lifetime_datatable_data, selection = 'none', extensions = c('Buttons', 'Select'), options = list(
+  lengthMenu = list(c(1, 5, 10, 25, 50, -1), c('1', '5', '10', '25', '50', 'All')),
+  pageLength = 5,
+  dom = 'Blfrtip',
+  scrollX = TRUE,
+  autoWidth = FALSE,
+  searchHighlight = TRUE,
+  buttons = list(
+        list(
+          extend = "copy",
+          text = 'Copy',
+          exportOptions = list(modifier = list(visible = TRUE), rows = ":visible", columns = ":visible")
+        ), 
+        list(
+          extend = "csv",
+          text = 'CSV',
+          exportOptions = list(modifier = list(visible = TRUE), rows = ":visible", columns = ":visible")
+        ), 
+        list(
+          extend = "excel",
+          text = 'Excel',
+          exportOptions = list(modifier = list(visible = TRUE), rows = ":visible", columns = ":visible")
+        )
+      )
+)
+)
+```
+
 ```{r echo=FALSE, include=FALSE}
 # example plotly plot
 activity = all_data %>%
