@@ -40,6 +40,7 @@ s08_2023 = read_excel("../data/data_from_discord/aws25 [Season Stats_ 2023-08].x
 s09_2023 = read_excel("../data/data_from_discord/aws25 [Season Stats_ 2023-09].xlsx")
 s10_2023 = read_excel("../data/data_from_discord/aws25 [Season Stats_ 2023-10].xlsx")
 s11_2023 = read_excel("../data/data_from_discord/aws25 [Season Stats_ 2023-11].xlsx")
+s12_2023 = read_excel("../data/data_from_discord/aws25 [Season Stats_ 2023-12].xlsx")
 
 # add a season column to each file
 s10_2021 = s10_2021 %>% mutate(Season = "10_2021")
@@ -68,6 +69,7 @@ s08_2023 = s08_2023 %>% mutate(Season = "08_2023")
 s09_2023 = s09_2023 %>% mutate(Season = "09_2023")
 s10_2023 = s10_2023 %>% mutate(Season = "10_2023")
 s11_2023 = s11_2023 %>% mutate(Season = "11_2023")
+s12_2023 = s12_2023 %>% mutate(Season = "12_2023")
 
 # standardize all column names
 # names_old is for files before Feb 2023
@@ -102,6 +104,7 @@ colnames(s08_2023) = names_new
 colnames(s09_2023) = names_new
 colnames(s10_2023) = names_new
 colnames(s11_2023) = names_new
+colnames(s12_2023) = names_new
 
 # create mappings for old/new discord tags. will add more as discovered.
 # TODO: implement this!
@@ -109,7 +112,7 @@ tags_old = c("NotKappa#7548", "Ema712#7846", "FrankRizzo#7014", "FireStarter#440
 tags_new = c("notkappa#0", "ema712#0", "frankrizzo#0", "stbeck#0")
 
 # combine all data
-all_data = bind_rows(s10_2021, s11_2021, s12_2021, s01_2022, s02_2022, s03_2022, s04_2022, s05_2022, s06_2022, s07_2022, s08_2022, s09_2022, s10_2022, s11_2022, s12_2022, s01_2023, s02_2023, s03_2023, s04_2023, s05_2023, s06_2023, s07_2023, s08_2023, s09_2023, s10_2023, s11_2023)
+all_data = bind_rows(s10_2021, s11_2021, s12_2021, s01_2022, s02_2022, s03_2022, s04_2022, s05_2022, s06_2022, s07_2022, s08_2022, s09_2022, s10_2022, s11_2022, s12_2022, s01_2023, s02_2023, s03_2023, s04_2023, s05_2023, s06_2023, s07_2023, s08_2023, s09_2023, s10_2023, s11_2023, s12_2023)
 
 # write to processed_data
-write_xlsx(all_data, "../data/processed_data/season_stats.xlsx")
+write_xlsx(all_data, "../data/processed_data/season_stats_dec23.xlsx")
